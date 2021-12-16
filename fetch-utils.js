@@ -29,13 +29,20 @@ export async function userLogin(email, password) {
 }
 
 // Check for active session
-
 export async function getSession() {
     return client.auth.session();
 }
 
+// Redirect to polls page if user session active
 export async function pollsRedirect() {
     if (await getSession()) {
         window.location.href = './polls';
     }
+}
+
+// Log out
+export async function logout() {
+    await client.auth.signOut();
+
+    window.location.href = '../';
 }

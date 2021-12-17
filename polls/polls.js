@@ -4,14 +4,20 @@ import {  } from '../render-utils.js';
 const logoutButtonEl = document.querySelector('#logout-button');
 const optionOneVoteButton = document.querySelector('#vote-one');
 const optionTwoVoteButton = document.querySelector('#vote-two');
-const optionOneVoteCountEl = document.querySelector('#option-one-text');
-const optionTwoVoteCountEl = document.querySelector('#option-two-text');
-const currentPollContainerEl = document.querySelector('#current-poll-container');
-const pastPollsContainerEl = document.querySelector('#past-polls-container');
+
+const currentPollFormEl = document.querySelector('form');
+const currentQuestionEl = document.querySelector('#current-question');
+const optionOneLabelEl = document.querySelector('#option-one-text');
+const optionTwoLabelEl = document.querySelector('#option-two-text');
+const optionOneVoteCountEl = document.querySelector('#option-one-votes');
+const optionTwoVoteCountEl = document.querySelector('#option-two-votes');
 
 // State
 let voteOneCount = 0;
 let voteTwoCount = 0;
+let question = '';
+let optionOneLabel = '';
+let optionTwoLabel = '';
 
 window.addEventListener('load', async() => {
     
@@ -20,6 +26,20 @@ window.addEventListener('load', async() => {
 
 logoutButtonEl.addEventListener('click', async() => {
     await logout();
+});
+
+currentPollFormEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(currentPollFormEl);
+    question = data.get('question');
+    optionOneLabel = data.get('option-one-input');
+    optionTwoLabel = data.get('option-two-input');
+
+    currentQuestionEl.textContent = question;
+    optionOneLabelEl.textContent = optionOneLabel;
+    optionTwoLabelEl.textContent = optionTwoLabel;
+    
+    currentPollFormEl.reset();
 });
 
 optionOneVoteButton.addEventListener('click', () => {

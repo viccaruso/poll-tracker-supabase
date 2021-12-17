@@ -22,20 +22,24 @@
     <main>
         <div id='current-poll-container'></div>
         <div>
-            <input type='text' placeholder='Poll Question' name='question' />
-            <input type='text' placeholder='Option 1' name='option-one-input' />
-            <input type='text' placeholder='Option 2' name='option-two-input' />
-            <button id='start-poll'>Open Poll</button>
+            <form>
+                <input type='text' placeholder='Poll Question' name='question' />
+                <input type='text' placeholder='Option 1' name='option-one-input' />
+                <input type='text' placeholder='Option 2' name='option-two-input' />
+                <button id='open-poll'>Open Poll</button>
+            </form>
             <hr>
         </div>
         <div>
-            
-                <h2 id='option-one-text'>--</h2>
-                <button id='vote-one'>Vote</button>
-            
-                <h2 id='option-two-text'>--</h2>
-                <button id='vote-two'>Vote</button>
-            
+            <h1 id='current-question'></h1>
+            <h2 id='option-one-text'></h2>
+            <h2 id='option-one-votes'></h2>
+            <button id='vote-one'>Vote</button>
+
+            <h2 id='option-two-text'></h2>
+            <h2 id='option-two-votes'></h2>
+            <button id='vote-two'>Vote</button>
+
             <button id='close-poll'>Close Poll</button>
         </div>
         <button id='logout-button'>Log Out</button>

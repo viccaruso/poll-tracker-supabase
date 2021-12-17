@@ -1,5 +1,5 @@
 import { logout } from '../fetch-utils.js';
-import {  } from '../render-utils.js';
+//import {  } from '../render-utils.js';
 
 const logoutButtonEl = document.querySelector('#logout-button');
 const optionOneVoteButton = document.querySelector('#vote-one');
@@ -38,7 +38,7 @@ currentPollFormEl.addEventListener('submit', (e) => {
     currentQuestionEl.textContent = question;
     optionOneLabelEl.textContent = optionOneLabel;
     optionTwoLabelEl.textContent = optionTwoLabel;
-    
+
     currentPollFormEl.reset();
 });
 

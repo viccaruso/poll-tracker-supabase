@@ -1,4 +1,4 @@
-import { logout } from '../fetch-utils.js';
+import { homeRedirect, logout } from '../fetch-utils.js';
 //import {  } from '../render-utils.js';
 
 const logoutButtonEl = document.querySelector('#logout-button');
@@ -20,34 +20,34 @@ let optionOneLabel = '';
 let optionTwoLabel = '';
 
 window.addEventListener('load', async() => {
+    homeRedirect();
     
+    logoutButtonEl.addEventListener('click', async() => {
+        await logout();
+    });
     
+    currentPollFormEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(currentPollFormEl);
+        question = data.get('question');
+        optionOneLabel = data.get('option-one-input');
+        optionTwoLabel = data.get('option-two-input');
+    
+        currentQuestionEl.textContent = question;
+        optionOneLabelEl.textContent = optionOneLabel;
+        optionTwoLabelEl.textContent = optionTwoLabel;
+    
+        currentPollFormEl.reset();
+    });
+    
+    optionOneVoteButton.addEventListener('click', () => {
+        voteOneCount++;
+        optionOneVoteCountEl.textContent = voteOneCount;
+    });
+    
+    optionTwoVoteButton.addEventListener('click', () => {
+        voteTwoCount++;
+        optionTwoVoteCountEl.textContent = voteTwoCount;
+    });
 });
 
-logoutButtonEl.addEventListener('click', async() => {
-    await logout();
-});
-
-currentPollFormEl.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(currentPollFormEl);
-    question = data.get('question');
-    optionOneLabel = data.get('option-one-input');
-    optionTwoLabel = data.get('option-two-input');
-
-    currentQuestionEl.textContent = question;
-    optionOneLabelEl.textContent = optionOneLabel;
-    optionTwoLabelEl.textContent = optionTwoLabel;
-
-    currentPollFormEl.reset();
-});
-
-optionOneVoteButton.addEventListener('click', () => {
-    voteOneCount++;
-    optionOneVoteCountEl.textContent = voteOneCount;
-});
-
-optionTwoVoteButton.addEventListener('click', () => {
-    voteTwoCount++;
-    optionTwoVoteCountEl.textContent = voteTwoCount;
-});

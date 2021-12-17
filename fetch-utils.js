@@ -33,6 +33,13 @@ export async function getSession() {
     return client.auth.session();
 }
 
+// Redirect to home page if no active user session
+export async function homeRedirect() {
+    if (!await getSession()) {
+        window.location.href = '../';
+    }
+}
+
 // Redirect to polls page if user session active
 export async function pollsRedirect() {
     if (await getSession()) {

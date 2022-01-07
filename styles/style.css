@@ -89,3 +89,53 @@ footer {
     background-color: var(--color3);
     box-shadow: var(--shadow);
 }
+
+#logout-button {
+    position: fixed;
+    right: 20px;
+    top: 90px;
+}
+
+#current-poll-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#close-poll {
+    margin: 1rem 0 1rem 0;
+    background-color: lightcoral;
+    max-width: fit-content;
+}
+
+.vote-button {
+    margin-top: 1rem;
+    background-color: lightseagreen;
+    max-width: fit-content;
+    max-height: 2rem;
+    align-self: center;
+}
+
+.answer-votes {
+    display: flex;
+    min-width: 200px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.answer-votes p {
+    margin: 0;
+    align-items: ;
+}
+
+.past-poll {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.most-recent {
+    background-color: rgba(32, 178, 171, 0.31);
+}

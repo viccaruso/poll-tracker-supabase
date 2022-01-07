@@ -4,6 +4,30 @@ const SUPABASE_URL = 'https://iddyxpegdpnmmnebvghi.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+export async function getPolls() {
+    const response = await client
+        .from('polls')
+        .select()
+        .order('id', { ascending: false });
+
+    return response.data;
+}
+
+export async function createPoll(poll) {
+    const response = await client
+        .from('polls')
+        .insert([
+            {
+                question: poll.question,
+                option_1: poll.option_1,
+                option_2: poll.option_2,
+                option_1_count: poll.option_1_count,
+                option_2_count: poll.option_2_count
+            }
+        ]);
+    return response.data;
+}
+
 // User signup
 export async function userSignup(email, password) {
     const response = await client.auth.signUp(

@@ -19,8 +19,10 @@
             <img src="../assets/big-logo.png" />
         </div>
     </header>
+    <section id='logout-button-section'>
+        <button id='logout-button'>Log Out</button>
+    </section>
     <main>
-        <div id='current-poll-container'></div>
         <div>
             <form>
                 <input type='text' placeholder='Poll Question' name='question' />
@@ -30,19 +32,22 @@
             </form>
             <hr>
         </div>
-        <div>
+        <div id='current-poll-container'>
             <h1 id='current-question'></h1>
-            <h2 id='option-one-text'></h2>
-            <h2 id='option-one-votes'></h2>
-            <button id='vote-one'>Vote</button>
+            <div class='answer-votes'>
+                <p id='option-one-text'></p>
+                <p id='option-one-votes'></p>
+                <button id='vote-one' class='vote-button' hidden>Vote</button>
+            </div>
+            <div class='answer-votes'>
+                <p id='option-two-text'></p>
+                <p id='option-two-votes'></p>
+                <button id='vote-two' class='vote-button' hidden>Vote</button>
+            </div>
 
-            <h2 id='option-two-text'></h2>
-            <h2 id='option-two-votes'></h2>
-            <button id='vote-two'>Vote</button>
-
-            <button id='close-poll'>Close Poll</button>
+            <button id='close-poll' hidden>Close Poll</button>
         </div>
-        <button id='logout-button'>Log Out</button>
+        <h2>Closed Polls:</h2>
         <div id='past-polls-container'></div>
     </main>
     <footer>
